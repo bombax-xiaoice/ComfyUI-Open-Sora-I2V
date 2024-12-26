@@ -1,0 +1,638 @@
+{
+  "last_node_id": 27,
+  "last_link_id": 53,
+  "nodes": [
+    {
+      "id": 20,
+      "type": "ImageScale",
+      "pos": [
+        777.508544921875,
+        395.0707702636719
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 20
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 40,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 41,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            17
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageScale"
+      },
+      "widgets_values": [
+        "nearest-exact",
+        512,
+        512,
+        "center"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "OpenSoraDecoder",
+      "pos": [
+        771.1998291015625,
+        147.62503051757812
+      ],
+      "size": [
+        315,
+        78
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 39
+        },
+        {
+          "name": "latents",
+          "type": "LATENT",
+          "link": 46
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OpenSoraDecoder"
+      },
+      "widgets_values": [
+        "fp16"
+      ]
+    },
+    {
+      "id": 19,
+      "type": "LoadImage",
+      "pos": [
+        506.3912048339844,
+        633.1259155273438
+      ],
+      "size": [
+        210,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            20
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "spaceship.png",
+        "image"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "OpenSoraSampler",
+      "pos": [
+        434.3109436035156,
+        154.79856872558594
+      ],
+      "size": [
+        315,
+        418
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pipe",
+          "type": "PIPE",
+          "link": 31
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 50,
+          "shape": 7
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 51,
+          "shape": 7
+        },
+        {
+          "name": "reference",
+          "type": "LATENT",
+          "link": 52,
+          "shape": 7
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "link": 37,
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "name": "guidance",
+          "type": "FLOAT",
+          "link": 38,
+          "widget": {
+            "name": "guidance"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "links": [
+            46
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OpenSoraSampler"
+      },
+      "widgets_values": [
+        0,
+        "fixed",
+        "fp16",
+        100,
+        4.5
+      ]
+    },
+    {
+      "id": 26,
+      "type": "OpenSoraTextEncoder",
+      "pos": [
+        49.04847717285156,
+        578.6974487304688
+      ],
+      "size": [
+        342.5970458984375,
+        266
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_encoder",
+          "type": "CLIP",
+          "link": 32
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            50
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            51
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OpenSoraTextEncoder"
+      },
+      "widgets_values": [
+        "A spaceship is flying in the outer space, stars are shining in the background, the milky way is in the middle of the background",
+        "",
+        "zoom out",
+        "enabled",
+        20,
+        "disabled",
+        6.5
+      ]
+    },
+    {
+      "id": 21,
+      "type": "OpenSoraEncoder",
+      "pos": [
+        773.2284545898438,
+        601.2484130859375
+      ],
+      "size": [
+        315,
+        78
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 47
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 17
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            52
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OpenSoraEncoder"
+      },
+      "widgets_values": [
+        "fp16"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1105.5999755859375,
+        141.22496032714844
+      ],
+      "size": [
+        315,
+        845.1666870117188
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 4,
+          "shape": 7
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "frame_rate",
+          "type": "FLOAT",
+          "link": 53,
+          "widget": {
+            "name": "frame_rate"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 24,
+        "loop_count": 0,
+        "filename_prefix": "OpenSora",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_00216.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 24
+          }
+        }
+      }
+    },
+    {
+      "id": 1,
+      "type": "OpenSoraLoader",
+      "pos": [
+        51.857086181640625,
+        155.7273406982422
+      ],
+      "size": [
+        327.5999755859375,
+        362
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "pipe",
+          "type": "PIPE",
+          "links": [
+            31
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "links": [
+            37
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "guidance",
+          "type": "FLOAT",
+          "links": [
+            38
+          ],
+          "slot_index": 2
+        },
+        {
+          "name": "text_encoder",
+          "type": "CLIP",
+          "links": [
+            32
+          ],
+          "slot_index": 3
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "links": [
+            39,
+            47
+          ],
+          "slot_index": 4
+        },
+        {
+          "name": "num_frames",
+          "type": "INT",
+          "links": [],
+          "slot_index": 5
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            40
+          ],
+          "slot_index": 6
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            41
+          ],
+          "slot_index": 7
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "links": [
+            53
+          ],
+          "slot_index": 8
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OpenSoraLoader"
+      },
+      "widgets_values": [
+        "opensora-v1-2/inference/sample.py",
+        "2s",
+        "480p",
+        "16:9",
+        "Default",
+        "Default",
+        "Default"
+      ]
+    }
+  ],
+  "links": [
+    [
+      4,
+      3,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      17,
+      20,
+      0,
+      21,
+      1,
+      "IMAGE"
+    ],
+    [
+      20,
+      19,
+      0,
+      20,
+      0,
+      "IMAGE"
+    ],
+    [
+      31,
+      1,
+      0,
+      27,
+      0,
+      "PIPE"
+    ],
+    [
+      32,
+      1,
+      3,
+      26,
+      0,
+      "CLIP"
+    ],
+    [
+      37,
+      1,
+      1,
+      27,
+      4,
+      "INT"
+    ],
+    [
+      38,
+      1,
+      2,
+      27,
+      5,
+      "FLOAT"
+    ],
+    [
+      39,
+      1,
+      4,
+      3,
+      0,
+      "VAE"
+    ],
+    [
+      40,
+      1,
+      6,
+      20,
+      1,
+      "INT"
+    ],
+    [
+      41,
+      1,
+      7,
+      20,
+      2,
+      "INT"
+    ],
+    [
+      46,
+      27,
+      0,
+      3,
+      1,
+      "LATENT"
+    ],
+    [
+      47,
+      1,
+      4,
+      21,
+      0,
+      "VAE"
+    ],
+    [
+      50,
+      26,
+      0,
+      27,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      51,
+      26,
+      1,
+      27,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      52,
+      21,
+      0,
+      27,
+      3,
+      "LATENT"
+    ],
+    [
+      53,
+      1,
+      8,
+      4,
+      4,
+      "FLOAT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7247011352964736,
+      "offset": [
+        170.62803641286968,
+        -70.31558273111013
+      ]
+    }
+  },
+  "version": 0.4
+}
