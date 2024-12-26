@@ -37,11 +37,11 @@ For `opensora-v1-2` and `opensora-v1-1` as well as VAEs and t5xxl, model files c
 
 ## Customized Models
 
-1. Older `opensora` and `pixart` do not support auto download, download them to model/checkpoints/ under comfy home directory and choose this custom_checkpoint
+1. Older `opensora` and `pixart` do not support auto download, download them to models/checkpoints/ under comfy home directory and choose this custom_checkpoint
 
-2. Can assign alternative model other than what the configuration defines. For example, download https://huggingface.co/hpcai-tech/OpenSora-STDiT-v2-stage2 instead of the STDiT-v2-stage3
+2. Can assign alternative model other than what the configuration defines. For example, download https://huggingface.co/hpcai-tech/OpenSora-STDiT-v2-stage2 as a folder under models/checkpoints, and use it via `custom_checkpoint` to replace the default STDiT-v2-stage3 model
 
-3. If someones had played with Comfy for a while, they have already have similar files in models/vae and models/clip under comfy home directory, such as [vae-ft-ema-560000-ema-pruned](https://huggingface.co/stabilityai/sd-vae-ft-ema-original), t5xxl_fp8_e4m3fn.safetensors or t5xxl_fp16.safetensors
+3. If someones had played with Comfy for a while, they have already have similar files in models/vae and models/clip under comfy home directory, such as [vae-ft-ema-560000-ema-pruned](https://huggingface.co/stabilityai/sd-vae-ft-ema-original), t5xxl_fp8_e4m3fn.safetensors or t5xxl_fp16.safetensors. They can also be used via `custom_vae` and `custom_clip`
 
 ## Text to Video
 
