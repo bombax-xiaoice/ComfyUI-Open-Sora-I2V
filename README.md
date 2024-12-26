@@ -67,7 +67,7 @@ Drag the following image into comfyui, or click Load for custom_nodes/ComfyUI-Op
 
 Results run under comfy
 
-https://github.com/user-attachments/assets/0d2ee49c-4d95-4e45-bc7b-a05141ca038e
+https://github.com/user-attachments/assets/350cd72b-e7e0-43dd-be97-a978d9d1b500
 
 ## Image To Video Example
 
@@ -77,7 +77,7 @@ Drag the following image into comfyui, or click Load for custom_nodes/ComfyUI-Op
 
 Results run under comfy
 
-https://github.com/user-attachments/assets/350cd72b-e7e0-43dd-be97-a978d9d1b500
+https://github.com/user-attachments/assets/0d2ee49c-4d95-4e45-bc7b-a05141ca038e
 
 ## Tips
 
