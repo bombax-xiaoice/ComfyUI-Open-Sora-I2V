@@ -1,4 +1,5 @@
 import os
+import os.path
 import sys
 import folder_paths
 comfy_path = os.path.dirname(folder_paths.__file__)
@@ -453,9 +454,9 @@ class OpenSoraTextEncoder:
             negative_embeds = [[negative_embeds[0], {"cond":negative_embeds[0]}]]
         else:
             negative_embeds = text_encoder.encode(negative_prompt)
-            if isinstance(positive_embeds, dict) and "y" in positive_embeds:
+            if isinstance(negative_embeds, dict) and "y" in negative_embeds:
                 if "mask" in negative_embeds:
-                    negative_embeds = [[negative_embeds['y'][0],{"cond":negative_embeds['y'][0],"pooled_output":positive_embeds['mask']}]]
+                    negative_embeds = [[negative_embeds['y'][0],{"cond":negative_embeds['y'][0],"pooled_output":negative_embeds['mask']}]]
                 else:
                     negative_embeds = [[negative_embeds['y'][0],{"cond":negative_embeds['y'][0]}]]
         return (positive_embeds, negative_embeds,)
